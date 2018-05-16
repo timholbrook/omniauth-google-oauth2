@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Sample app for Google OAuth2 Strategy
+# Sample app for Google OAuth2 Apis Strategy
 # Make sure to setup the ENV variables GOOGLE_KEY and GOOGLE_SECRET
 # Run with "bundle exec rackup"
 
@@ -8,7 +8,7 @@ require 'rubygems'
 require 'bundler'
 require 'sinatra'
 require 'omniauth'
-require 'omniauth-google-oauth2'
+require 'omniauth-google-oauth2-apis'
 
 # Do not use for production code.
 # This is only to make setup easier when running through the sample.
@@ -17,14 +17,14 @@ require 'omniauth-google-oauth2'
 # http://railsapps.github.io/openssl-certificate-verify-failed.html
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
-# Main example app for omniauth-google-oauth2
+# Main example app for omniauth-google-oauth2-apis
 class App < Sinatra::Base
   get '/' do
     <<-HTML
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Google OAuth2 Example</title>
+    <title>Google OAuth2 Apis Example</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
       jQuery(function() {
@@ -56,7 +56,7 @@ class App < Sinatra::Base
           }, function(response) {
             if (response && !response.error) {
               // google authentication succeed, now post data to server.
-              jQuery.ajax({type: 'POST', url: "/auth/google_oauth2/callback", data: response,
+              jQuery.ajax({type: 'POST', url: "/auth/google_oauth2_apis/callback", data: response,
                 success: function(data) {
                   // Log the data returning from google.
                   console.log(data)
@@ -73,7 +73,7 @@ class App < Sinatra::Base
   </head>
   <body>
   <ul>
-    <li><a href='/auth/google_oauth2'>Sign in with Google</a></li>
+    <li><a href='/auth/google_oauth2_apis'>Sign in with Google</a></li>
     <li><a href='#' class="googleplus-login">Sign in with Google via AJAX</a></li>
   </ul>
   </body>
@@ -114,7 +114,7 @@ use Rack::Session::Cookie, secret: ENV['RACK_COOKIE_SECRET']
 use OmniAuth::Builder do
   # For additional provider examples please look at 'omni_auth.rb'
   # The key provider_ignores_state is only for AJAX flows. It is not recommended for normal logins.
-  provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], access_type: 'offline', prompt: 'consent', provider_ignores_state: true, scope: 'email,profile,calendar'
+  provider :google_oauth2_apis, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], access_type: 'offline', prompt: 'consent', provider_ignores_state: true, scope: 'email,profile,calendar'
 end
 
 run App.new

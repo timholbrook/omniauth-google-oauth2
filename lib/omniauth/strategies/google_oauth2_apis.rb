@@ -7,12 +7,12 @@ require 'uri'
 module OmniAuth
   module Strategies
     # Main class for Google OAuth2 strategy.
-    class GoogleOauth2 < OmniAuth::Strategies::OAuth2
+    class GoogleOauth2Apis < OmniAuth::Strategies::OAuth2
       BASE_SCOPE_URL = 'https://www.googleapis.com/auth/'
       BASE_SCOPES = %w[profile email openid].freeze
       DEFAULT_SCOPE = 'email,profile'
 
-      option :name, 'google_oauth2'
+      option :name, 'google_oauth2_apis'
       option :skip_friends, true
       option :skip_image_info, true
       option :skip_jwt, false

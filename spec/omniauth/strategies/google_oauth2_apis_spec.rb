@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'json'
 require 'omniauth-google-oauth2'
 
-describe OmniAuth::Strategies::GoogleOauth2 do
+describe OmniAuth::Strategies::GoogleOauth2Apis do
   let(:request) { double('Request', params: {}, cookies: {}, env: {}) }
   let(:app) do
     lambda do
@@ -13,7 +13,7 @@ describe OmniAuth::Strategies::GoogleOauth2 do
   end
 
   subject do
-    OmniAuth::Strategies::GoogleOauth2.new(app, 'appid', 'secret', @options || {}).tap do |strategy|
+    OmniAuth::Strategies::GoogleOauth2Apis.new(app, 'appid', 'secret', @options || {}).tap do |strategy|
       allow(strategy).to receive(:request) do
         request
       end
@@ -747,14 +747,14 @@ describe OmniAuth::Strategies::GoogleOauth2 do
       subject.options.hd = 'invalid.com'
       expect do
         subject.send(:verify_hd, access_token)
-      end.to raise_error(OmniAuth::Strategies::GoogleOauth2::CallbackError)
+      end.to raise_error(OmniAuth::Strategies::GoogleOauth2Apis::CallbackError)
     end
 
     it 'should raise error if options hd is set as an array and is not correct' do
       subject.options.hd = ['invalid.com', 'invalid.co']
       expect do
         subject.send(:verify_hd, access_token)
-      end.to raise_error(OmniAuth::Strategies::GoogleOauth2::CallbackError)
+      end.to raise_error(OmniAuth::Strategies::GoogleOauth2Apis::CallbackError)
     end
   end
 end

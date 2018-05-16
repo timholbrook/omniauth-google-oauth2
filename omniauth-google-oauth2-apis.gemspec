@@ -6,8 +6,8 @@ require File.expand_path(
 )
 
 Gem::Specification.new do |gem|
-  gem.name          = 'omniauth-google-oauth2'
-  gem.version       = OmniAuth::GoogleOauth2::VERSION
+  gem.name          = 'omniauth-google-oauth2-apis'
+  gem.version       = OmniAuth::GoogleOauth2Apis::VERSION
   gem.license       = 'MIT'
   gem.summary       = %(A Google OAuth2 strategy for OmniAuth 1.x)
   gem.description   = %(A Google OAuth2 strategy for OmniAuth 1.x. This allows you to login to Google with your ruby app.)
