@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require File.expand_path(
-  File.join('..', 'lib', 'omniauth', 'google_oauth2', 'version'),
+  File.join('..', 'lib', 'omniauth', 'google_oauth2_apis', 'version'),
   __FILE__
 )
 
